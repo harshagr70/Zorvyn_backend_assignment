@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment (never commit secrets)
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Build output
+dist/
+build/
+client/dist/
+
+# Tests & tooling
+coverage/
+server/.mongodb-binaries/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives / misc
+*.tgz
+assignment_plan.md/

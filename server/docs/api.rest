@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:5001/api/v1
+@contentType = application/json
+
+### Register
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "name": "Demo User",
+  "email": "demo@example.com",
+  "password": "password123"
+}
+
+### Login (copy token from response)
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
+### Get current user
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{$dotenv TOKEN}}
+
+### List users (admin)
+GET {{baseUrl}}/users?page=1&limit=10
+Authorization: Bearer {{$dotenv TOKEN}}
+
+### Create record (analyst/admin)
+POST {{baseUrl}}/records
+Authorization: Bearer {{$dotenv TOKEN}}
+Content-Type: {{contentType}}
+
+{
+  "amount": 1550.5,
+  "type": "income",
+  "category": "salary",
+  "date": "2026-04-01T10:00:00.000Z",
+  "description": "Monthly salary"
+}
+
+### List records
+GET {{baseUrl}}/records?page=1&limit=10&type=income
+Authorization: Bearer {{$dotenv TOKEN}}
+
+### Dashboard overview
+GET {{baseUrl}}/dashboard/overview
+Authorization: Bearer {{$dotenv TOKEN}}
